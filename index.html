@@ -8,6 +8,17 @@
         <meta content="" name="keywords">
         <meta content="" name="description">
 
+        <!-- Owl Carousel CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Owl Carousel JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,6 +38,39 @@
 
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
+        <script>
+         document.addEventListener("DOMContentLoaded", function () {
+           fetch('fetch_home_content.php')
+           .then(response => response.json())
+           .then(data => {
+            if (data) {
+                 const siteName = data.site_name;  // e.g. "GurkhaMind"
+                 const highlightedPart = "Mind";   
+
+                 const beforeHighlight = siteName.replace(highlightedPart, "");
+                 highlighted = siteName.includes(highlightedPart) ? highlightedPart : "";
+
+                document.getElementById('site-name').innerHTML = `${beforeHighlight}<span style="color: #26d48c;">${highlighted}</span>`;
+
+                document.getElementById('hero-heading').innerHTML = data.hero_heading;
+                document.getElementById('hero-paragraph').innerHTML = data.hero_paragraph;
+                let heroImgPath = data.hero_img;
+
+
+            if(heroImgPath.startsWith('uploads/')){
+    heroImgPath = heroImgPath.substring(8); // remove 'uploads/' (8 chars)
+}
+
+                document.getElementById('hero-img').src = "admin/uploads/" + heroImgPath;
+
+
+            }
+        })
+        .catch(error => console.error('Error fetching content:', error));
+});
+</script>
+
+
     </head>
 
     <body>
@@ -36,37 +80,40 @@
         </div>
         <!-- Spinner End -->
 
-        <!-- Navbar Start -->
-        <div class="container-fluid bg-dark" style="background: linear-gradient(135deg, #0b1c36, #0b1c36);">
-            <div class="container">
-                <nav class="navbar navbar-dark navbar-expand-lg py-0">
-                    <a href="index.html" class="navbar-brand">
-                        <h1 class="text-white fw-bold d-block">Gurkha<span class="text-secondary">Mind</span> </h1>
-                    </a>
-                    <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse bg-transparent" id="navbarCollapse">
-                        <div class="navbar-nav ms-auto mx-xl-auto p-0">
-                            <a href="index.html" class="nav-item nav-link active text-secondary">Home</a>
-                            <a href="#" class="nav-item nav-link">About</a>
-                            <a href="#" class="nav-item nav-link">Services</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                                <div class="dropdown-menu rounded">
-                                    <a href="#" class="dropdown-item">Our Blog</a>
-                                    <a href="#" class="dropdown-item">Our Team</a>
-                                    <a href="#" class="dropdown-item">Testimonial</a>
-                                </div>
-                            </div>
-                            <a href="#" class="nav-item nav-link">Contact</a>
+       <!-- Navbar Start -->
+<div class="container-fluid bg-dark" style="background: linear-gradient(135deg, #0b1c36, #0b1c36);">
+    <div class="container">
+        <nav class="navbar navbar-dark navbar-expand-lg py-0">
+            <a href="index.html" class="navbar-brand me-auto">
+                <h1 class="text-white fw-bold d-block" id="site-name">Loading...</h1>
+            </a>
+            <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse bg-transparent" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-0">
+                    <a href="index.html" class="nav-item nav-link active text-secondary">Home</a>
+                    <a href="#about" class="nav-item nav-link">About</a>
+                    <a href="#services" class="nav-item nav-link">Services</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu rounded">
+                            <a href="#work" class="dropdown-item">Our Work</a>
+                            <a href="#team" class="dropdown-item">Our Team</a>
+                            <a href="#testimonial" class="dropdown-item">Testimonial</a>
                         </div>
                     </div>
-                  
-                </nav>
+                    <a href="#contact" class="nav-item nav-link">Contact</a>
+                </div>
             </div>
-        </div>
-        <!-- Navbar End -->
+        </nav>
+    </div>
+</div>
+
+<!-- Fullscreen thin line -->
+<div style="height: 0.9px; background-color: rgba(255, 255, 255, 0.2); width: 100%;"></div>
+<!-- Navbar End -->
+
 
       <!-- Hero Section Start -->
        <div style="background: #0b1c36; color: white; padding: 80px 20px; font-family: 'Segoe UI', sans-serif;">
@@ -74,12 +121,13 @@
     
       <!-- Left Text Content -->
        <div style="flex: 1 1 500px; padding: 20px;">
-      <h1 style="font-size: 3rem; font-weight: bold; margin-bottom: 20px;color: #cfd6e1;">Himalayan Wisdom,<br>Digital Power</h1>
-      <p style="font-size: 1.2rem; margin-bottom: 30px; color: #cfd6e1;">
-        Empowering organizations through data-driven insights, AI consulting, and digital transformation.
-      </p>
+      <h1 style="font-size: 3rem;" id="hero-heading">Loading...</h1>
+      <p style="font-size: 1.2rem;" id="hero-paragraph">Loading...</p>
       
 <style>
+    #hero-heading {
+  color: white;
+}
   .btn-primary-custom {
     background-color: #0d6efd;
     color: white;
@@ -125,7 +173,8 @@
 
     <!-- Right Image/Graphic -->
     <div style="flex: 1 1 400px; padding: 20px; text-align: center;">
-      <img src="img/carousel-2.jpg" alt="Analytics" style="max-width: 100%; border-radius: 10px;">
+      <img id="hero-img" src="uploads/default.jpg" alt="Hero Image" style="max-width: 100%; border-radius: 10px;">
+
     </div>
   </div>
 
@@ -144,6 +193,7 @@
 
 
         <!-- About Start -->
+<section id="about"></section>         
 <div class="container-fluid py-5 my-5" style="background: linear-gradient(to right, #f9fbff, #eef3fa); font-family: 'Segoe UI', sans-serif;">
     <div class="container pt-5">
         <div class="row g-5 align-items-center">
@@ -205,248 +255,347 @@
         </div>
     </div>
 </div>
+</section>
 <!-- About End -->
 
-
 <!-- Services Start -->
+ <section id="services"></section>
 <div style="padding: 60px 0; background: linear-gradient(135deg, #f4f7ff, #eaf1ff); font-family: 'Segoe UI', sans-serif;">
-    <div style="max-width: 1140px; margin: auto; padding: 0 30px;"> <!-- Adjusted padding here -->
-        <div style="text-align: center; margin-bottom: 50px;">
-            <h5 style="color: #007bff; font-weight: 600; margin-bottom: 10px;">Our Services</h5>
-            <h2 style="font-size: 32px; font-weight: 700; color: #333;">Empowering Change Through Innovation</h2>
-        </div>
+  <div style="max-width: 1140px; margin: auto; padding: 0 30px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 30px;">
 
-        <div class="row" style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
-            
-            <!-- Card 1 -->
-            <div class="responsive-card" style="flex: 0 0 calc(50% - 15px); background: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; cursor: default;"
-                 onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 25px rgba(0,0,0,0.12)';"
-                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 20px rgba(0,0,0,0.08)';">
-                <div style="margin-bottom: 20px; color: #007bff;">
-                    <i class="fas fa-robot" style="font-size: 36px;"></i>
-                </div>
-                <h4 style="margin-bottom: 15px; color: #222;">AI & Machine Learning Consulting</h4>
-                <p style="color: #555;">We help organizations implement AI with real-world results through custom strategies and ML models.</p>
-                <ul style="margin-left: 18px; color: #444; font-size: 15px; margin-top: 10px;">
-                    <li>AI Readiness & Roadmapping</li>
-                    <li>ML Model Development & NLP</li>
-                    <li>Computer Vision & Predictive Analytics</li>
-                    <li>Integration & Model Optimization</li>
-                </ul>
-                <p style="font-style: italic; font-size: 14px; margin-top: 10px; color: #666;">Case: Document automation cut time by 87% with 98.5% accuracy.</p>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="responsive-card" style="flex: 0 0 calc(50% - 15px); background: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; cursor: default;"
-                 onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 25px rgba(0,0,0,0.12)';"
-                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 20px rgba(0,0,0,0.08)';">
-                <div style="margin-bottom: 20px; color: #007bff;">
-                    <i class="fas fa-database" style="font-size: 36px;"></i>
-                </div>
-                <h4 style="margin-bottom: 15px; color: #222;">Data Mining & Curation</h4>
-                <p style="color: #555;">We turn raw information into AI-ready datasets for powerful insights and decision-making.</p>
-                <ul style="margin-left: 18px; color: #444; font-size: 15px; margin-top: 10px;">
-                    <li>Data Collection & Cleaning</li>
-                    <li>Synthetic Data & Labeling</li>
-                    <li>Security Frameworks</li>
-                    <li>Knowledge Graphs & Optimization</li>
-                </ul>
-                <p style="font-style: italic; font-size: 14px; margin-top: 10px; color: #666;">Case: Built multi-nation economic DB for finance institution.</p>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="responsive-card" style="flex: 0 0 calc(50% - 15px); background: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; cursor: default;"
-                 onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 25px rgba(0,0,0,0.12)';"
-                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 20px rgba(0,0,0,0.08)';">
-                <div style="margin-bottom: 20px; color: #007bff;">
-                    <i class="fas fa-chart-line" style="font-size: 36px;"></i>
-                </div>
-                <h4 style="margin-bottom: 15px; color: #222;">Economic & Business Consulting</h4>
-                <p style="color: #555;">We blend economic analysis with data science to empower strategic decision-making.</p>
-                <ul style="margin-left: 18px; color: #444; font-size: 15px; margin-top: 10px;">
-                    <li>Market Entry & Forecasting</li>
-                    <li>Risk Analysis & ROI Projections</li>
-                    <li>Economic Impact Assessment</li>
-                    <li>Policy Evaluation</li>
-                </ul>
-                <p style="font-style: italic; font-size: 14px; margin-top: 10px; color: #666;">Case: Built ML early-warning system for inflation risks.</p>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="responsive-card" style="flex: 0 0 calc(50% - 15px); background: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; cursor: default;"
-                 onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 25px rgba(0,0,0,0.12)';"
-                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 20px rgba(0,0,0,0.08)';">
-                <div style="margin-bottom: 20px; color: #007bff;">
-                    <i class="fas fa-building" style="font-size: 36px;"></i>
-                </div>
-                <h4 style="margin-bottom: 15px; color: #222;">Digital Transformation for Governments</h4>
-                <p style="color: #555;">We modernize public services using AI tools while ensuring transparency and trust.</p>
-                <ul style="margin-left: 18px; color: #444; font-size: 15px; margin-top: 10px;">
-                    <li>E-Governance & Public Infra</li>
-                    <li>Legacy System Modernization</li>
-                    <li>AI-Driven Citizen Services</li>
-                    <li>Digital Identity & Open Data</li>
-                </ul>
-                <p style="font-style: italic; font-size: 14px; margin-top: 10px; color: #666;">Case: Transformed municipal services, cutting wait by 65%.</p>
-            </div>
-
-        </div>
+    <!-- Left: Service Info -->
+    <div class="services-info" style="flex: 1; min-width: 280px; max-width: 350px;">
+      <h5 class="text-primary" style="color: #007bff; font-weight: 600; margin-bottom: 10px;">Our Services</h5>
+      <h2 style="font-size: 32px; font-weight: 700; color: #333;">Empowering Change Through Innovation</h2>
     </div>
+
+    <!-- Right: Service Cards -->
+    <div class="services-grid">
+      <!-- Card 1 -->
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="card-content">
+              <div style="margin-bottom: 20px; color: #007bff;">
+                <i class="fas fa-robot" style="font-size: 32px;"></i>
+              </div>
+              <h4>AI & Machine Learning Consulting</h4>
+              <p>We help organizations implement AI with real-world results through custom strategies and ML models.</p>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <div class="card-content">
+              <h5 class="flip-title">Services</h5>
+              <ul>
+                <li>AI Readiness & Roadmapping</li>
+                <li>ML Model Development & NLP</li>
+                <li>Computer Vision & Predictive Analytics</li>
+                <li>Integration & Model Optimization</li>
+              </ul>
+              <p>Case: Automation cut time by 87% with 98.5% accuracy.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="card-content">
+              <div style="margin-bottom: 20px; color: #007bff;">
+                <i class="fas fa-database" style="font-size: 32px;"></i>
+              </div>
+              <h4>Data Mining & Curation</h4>
+              <p>We turn raw information into AI-ready datasets for powerful insights and decision-making.</p>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <div class="card-content">
+              <h5 class="flip-title">Services</h5>
+              <ul>
+                <li>Data Collection & Cleaning</li>
+                <li>Synthetic Data & Labeling</li>
+                <li>Security Frameworks</li>
+                <li>Knowledge Graphs</li>
+              </ul>
+              <p>Case: Built multi-nation economic DB for finance institution.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="card-content">
+              <div style="margin-bottom: 20px; color: #007bff;">
+                <i class="fas fa-chart-line" style="font-size: 32px;"></i>
+              </div>
+              <h4>Economic & Business Consulting</h4>
+              <p>We blend economic analysis with data science to empower strategic decision-making.</p>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <div class="card-content">
+              <h5 class="flip-title">Services</h5>
+              <ul>
+                <li>Market Entry & Forecasting</li>
+                <li>Risk Analysis & ROI</li>
+                <li>Impact Assessment</li>
+                <li>Policy Evaluation</li>
+              </ul>
+              <p>Case: ML early-warning system for inflation risks.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="card-content">
+              <div style="margin-bottom: 20px; color: #007bff;">
+                <i class="fas fa-building" style="font-size: 32px;"></i>
+              </div>
+              <h4>Digital Transformation</h4>
+              <p>We modernize public services using AI tools while ensuring transparency and trust.</p>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <div class="card-content">
+              <h5 class="flip-title">Services</h5>
+              <ul>
+                <li>E-Governance Platforms</li>
+                <li>Legacy System Modernization</li>
+                <li>AI Citizen Services</li>
+                <li>Open Data Frameworks</li>
+              </ul>
+              <p>Case: Transformed municipal services, cut wait by 65%.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+</section>
+<!-- CSS -->
 <style>
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    flex: 2;
+    min-width: 300px;
+  }
+
+  .flip-card {
+    background: transparent;
+    perspective: 1000px;
+    min-height: 300px;
+    cursor: pointer;
+  }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .flip-card:hover .flip-card-inner,
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    box-sizing: border-box;
+  }
+
+  .flip-card-front {
+    background: #fff;
+    color: #333;
+  }
+
+  .flip-card-back {
+    background: #007bff;
+    color: white;
+    transform: rotateY(180deg);
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .card-content h4 {
+    margin-bottom: 10px;
+    font-size: 19px;
+  }
+
+  .card-content p {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+  .flip-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-bottom: 2px solid white;
+    display: inline-block;
+  }
+
+  .card-content ul {
+    padding-left: 18px;
+    font-size: 16px;
+    margin: 10px 0;
+  }
+
+  @media (max-width: 992px) {
+    .services-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  }
+
   @media (max-width: 768px) {
-    .responsive-card {
-      flex: 0 0 100% !important;
+    .services-info {
+      max-width: 100% !important;
+    }
+
+    .services-grid {
+      flex: 100%;
+    }
+
+    .services-info,
+    .services-grid {
+      width: 100%;
+    }
+
+    .flip-card {
+      min-height: 280px;
     }
   }
 </style>
 
-<!-- Services End -->
-
-
-<!-- Project Start -->
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<section id="work"></section>
 <div class="container-fluid project py-5 mb-5">
-    <div class="container">
-        <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
-            <h5 class="text-primary">Our Work</h5>
-            <h1>Transformative Ideas and Impacts</h1>
+  <div class="container">
+    <div class="row align-items-start">
+      <!-- Left side: text content -->
+      <div class="col-md-4">
+        <div class="text-start pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 100%;">
+          <h5 class="text-primary">Our Work</h5>
+          <h1>Transformative Ideas and Impacts</h1>
         </div>
+      </div>
+
+      <!-- Right side: cards -->
+      <div class="col-md-8">
         <div class="row g-4">
-            <!-- Card 1 -->
-            <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".3s">
-                <div class="p-4 bg-light rounded h-100">
-                    <h5 class="fw-bold">Digital Transformation for Governments</h5>
-                    <p class="mb-3">Modernizing public services through AI-based citizen platforms and data initiatives.</p>
-                    <hr>
-                    <small class="d-block fw-semibold text-muted mb-1">Case study</small>
-                    <h6 class="mb-1">Municipal Council</h6>
-                    <p class="mb-0 text-muted">Reduced waiting times by 65% in a service delivery system using AI workflows.</p>
-                </div>
+          <!-- Card 1 -->
+          <div class="col-md-6 col-lg-6 wow fadeIn" data-wow-delay=".3s">
+            <div class="p-4 bg-light rounded h-100">
+              <h5 class="fw-bold">Digital Transformation for Governments</h5>
+              <p class="mb-3">Modernizing public services through AI-based citizen platforms and data initiatives.</p>
+              <hr>
+              <small class="d-block fw-semibold text-muted mb-1">Case study</small>
+              <h6 class="mb-1">Municipal Council</h6>
+              <p class="mb-0 text-muted">Reduced waiting times by 65% in a service delivery system using AI workflows.</p>
             </div>
+          </div>
 
-            <!-- Card 2 -->
-            <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".5s">
-                <div class="p-4 bg-light rounded h-100">
-                    <h5 class="fw-bold">Economic & Business Consulting</h5>
-                    <p class="mb-3">Creating strategic insights with forecasting models and ROI-driven recommendations.</p>
-                    <hr>
-                    <small class="d-block fw-semibold text-muted mb-1">Case study</small>
-                    <h6 class="mb-1">Central Bank</h6>
-                    <p class="mb-0 text-muted">Developed an early warning system for inflation risks using machine learning.</p>
-                </div>
+          <!-- Card 2 -->
+          <div class="col-md-6 col-lg-6 wow fadeIn" data-wow-delay=".5s">
+            <div class="p-4 bg-light rounded h-100">
+              <h5 class="fw-bold">Economic & Business Consulting</h5>
+              <p class="mb-3">Creating strategic insights with forecasting models and ROI-driven recommendations.</p>
+              <hr>
+              <small class="d-block fw-semibold text-muted mb-1">Case study</small>
+              <h6 class="mb-1">Central Bank</h6>
+              <p class="mb-0 text-muted">Developed an early warning system for inflation risks using machine learning.</p>
             </div>
+          </div>
 
-            <!-- Card 3 -->
-            <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".7s">
-                <div class="p-4 bg-light rounded h-100">
-                    <h5 class="fw-bold">Bespoke Research & Strategy</h5>
-                    <p class="mb-3">Conducting custom studies and building innovative AI strategies for unique challenges.</p>
-                    <hr>
-                    <small class="d-block fw-semibold text-muted mb-1">Case study</small>
-                    <h6 class="mb-1">International Development Org</h6>
-                    <p class="mb-0 text-muted">Created an AI readiness index for 25 developing economies.</p>
-                </div>
+          <!-- Card 3 -->
+          <div class="col-md-6 col-lg-6 wow fadeIn" data-wow-delay=".7s">
+            <div class="p-4 bg-light rounded h-100">
+              <h5 class="fw-bold">Bespoke Research & Strategy</h5>
+              <p class="mb-3">Conducting custom studies and building innovative AI strategies for unique challenges.</p>
+              <hr>
+              <small class="d-block fw-semibold text-muted mb-1">Case study</small>
+              <h6 class="mb-1">International Development Org</h6>
+              <p class="mb-0 text-muted">Created an AI readiness index for 25 developing economies.</p>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
-<!-- Project End -->
+</section>
 
-
-
-       
-
-
-        <!-- Team Start -->
-        <div class="container-fluid py-5 mb-5 team">
-            <div class="container">
-                <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
-                    <h5 class="text-primary">Our Team</h5>
-                    <h1>Meet our expert Team</h1>
-                </div>
-                <div class="owl-carousel team-carousel wow fadeIn" data-wow-delay=".5s">
-                    <div class="rounded team-item">
-                        <div class="team-content">
-                            <div class="team-img-icon">
-                                <div class="team-img rounded-circle">
-                                    <img src="img/team-1.jpg" class="img-fluid w-100 rounded-circle" alt="">
-                                </div>
-                                <div class="team-name text-center py-3">
-                                    <h4 class="">Full Name</h4>
-                                    <p class="m-0">Designation</p>
-                                </div>
-                                <div class="team-icon d-flex justify-content-center pb-4">
-                                    <a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i class="fab fa-instagram"></i></a>
-                                    <a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rounded team-item">
-                        <div class="team-content">
-                            <div class="team-img-icon">
-                                <div class="team-img rounded-circle">
-                                    <img src="img/team-2.jpg" class="img-fluid w-100 rounded-circle" alt="">
-                                </div>
-                                <div class="team-name text-center py-3">
-                                    <h4 class="">Full Name</h4>
-                                    <p class="m-0">Designation</p>
-                                </div>
-                                <div class="team-icon d-flex justify-content-center pb-4">
-                                    <a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i class="fab fa-instagram"></i></a>
-                                    <a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rounded team-item">
-                        <div class="team-content">
-                            <div class="team-img-icon">
-                                <div class="team-img rounded-circle">
-                                    <img src="img/team-3.jpg" class="img-fluid w-100 rounded-circle" alt="">
-                                </div>
-                                <div class="team-name text-center py-3">
-                                    <h4 class="">Full Name</h4>
-                                    <p class="m-0">Designation</p>
-                                </div>
-                                <div class="team-icon d-flex justify-content-center pb-4">
-                                    <a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i class="fab fa-instagram"></i></a>
-                                    <a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rounded team-item">
-                        <div class="team-content">
-                            <div class="team-img-icon">
-                                <div class="team-img rounded-circle">
-                                    <img src="img/team-4.jpg" class="img-fluid w-100 rounded-circle" alt="">
-                                </div>
-                                <div class="team-name text-center py-3">
-                                    <h4 class="">Full Name</h4>
-                                    <p class="m-0">Designation</p>
-                                </div>
-                                <div class="team-icon d-flex justify-content-center pb-4">
-                                    <a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i class="fab fa-instagram"></i></a>
-                                    <a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- Team Start -->
+ <section id="team">
+<div class="container-fluid py-5 mb-5 team">
+  <div class="container">
+    <div class="row align-items-center">
+      
+      <!-- Left side: text content -->
+      <div class="col-md-4">
+        <div class="text-start wow fadeIn" data-wow-delay=".3s" style="max-width: 100%;">
+          <h5 class="text-primary">Our Team</h5>
+          <h1>Meet our expert Team</h1>
         </div>
-        <!-- Team End -->
+        <button id="team-prev" class="btn btn-primary"><i class="bi bi-chevron-left"></i></button>
+<button id="team-next" class="btn btn-primary"><i class="bi bi-chevron-right"></i></button>
+
+      </div>
+      
+      <!-- Right side: team carousel + arrows -->
+      <div class="col-md-8 position-relative">
+        <!-- Carousel -->
+        <div class="owl-carousel team-carousel wow fadeIn" data-wow-delay=".5s">
+          <!-- Dynamic team members injected here -->
+        </div>
+
+        
+        
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Team End -->
+</section>
+
+
+
+
+
+
+
+
+        
 
        <!-- Testimonial Start -->
+  <sectio id="testimonial">    
 <div class="container-fluid testimonial py-5 mb-5">
     <div class="container">
         <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
@@ -546,6 +695,7 @@
         </div>
     </div>
 </div>
+</section> 
 <!-- Testimonial End -->
 
 <style>
@@ -642,53 +792,63 @@
 
 </style>
 
-
-       <!-- Contact Start -->
+<!-- Contact Start -->
+ <section id="contact"> 
 <div class="container-fluid py-5 mb-5" style="background-color: #f9fafb;">
     <div class="container">
         <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
-            <h5 class="text-secondary" style="letter-spacing: 2px; font-weight: 600;">Ready to Transform</h5>
-            <h1 class="mb-4" style="font-weight: 700; color: #1a2e4a;">Contact for Any Query</h1>
+            <h5 class="text-secondary text-uppercase tracking-widest" style="letter-spacing: 2px; font-weight: 600;">Ready to Transform</h5>
+            <h1 class="mb-4 display-5 fw-bold" style="color: #1a2e4a;">Contact for Any Query</h1>
+            <p class="text-muted">We’d love to hear from you. Whether you have a question, feedback, or just want to say hello, our team is ready to help.</p>
         </div>
-        <div class="contact-detail position-relative p-4 rounded shadow-sm" style="background: #fff;">
+
+        <div class="contact-detail position-relative p-4 p-md-5 rounded shadow-lg" style="background: #ffffff; border: 1px solid #eaeaea;">
             <div class="row g-4 mb-5 justify-content-center">
+                <!-- Address -->
                 <div class="col-xl-4 col-lg-6 wow fadeIn" data-wow-delay=".3s">
-                    <div class="d-flex align-items-center bg-light rounded p-3">
-                        <div class="flex-shrink-0 btn-square bg-primary rounded-circle d-flex justify-content-center align-items-center" style="width: 60px; height: 60px;">
+                    <div class="d-flex align-items-center bg-light rounded-4 p-3 h-100 shadow-sm hover-shadow transition">
+                        <div class="btn-square bg-primary rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 60px; height: 60px;">
                             <i class="fas fa-map-marker-alt text-white fs-4"></i>
                         </div>
-                        <div class="ms-3">
-                            <h5 class="text-primary mb-1" style="font-weight: 600;">Address</h5>
-                            <a href="https://goo.gl/maps/Zd4BCynmTb98ivUJ6" target="_blank" class="h6 text-decoration-none text-dark">23 Rank St, New York</a>
+                        <div>
+                            <h5 class="text-primary mb-1 fw-semibold">Address</h5>
+                            <a href="https://goo.gl/maps/Zd4BCynmTb98ivUJ6" target="_blank" class="text-decoration-none text-dark small">23 Rank St, New York</a>
                         </div>
                     </div>
                 </div>
+
+                <!-- Phone -->
                 <div class="col-xl-4 col-lg-6 wow fadeIn" data-wow-delay=".5s">
-                    <div class="d-flex align-items-center bg-light rounded p-3">
-                        <div class="flex-shrink-0 btn-square bg-primary rounded-circle d-flex justify-content-center align-items-center" style="width: 60px; height: 60px;">
+                    <div class="d-flex align-items-center bg-light rounded-4 p-3 h-100 shadow-sm hover-shadow transition">
+                        <div class="btn-square bg-primary rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 60px; height: 60px;">
                             <i class="fa fa-phone text-white fs-4"></i>
                         </div>
-                        <div class="ms-3">
-                            <h5 class="text-primary mb-1" style="font-weight: 600;">Call Us</h5>
-                            <a class="h6 text-decoration-none text-dark" href="tel:+0123456789">+0 000 000 0000</a>
+                        <div>
+                            <h5 class="text-primary mb-1 fw-semibold">Call Us</h5>
+                            <a class="text-decoration-none text-dark small" href="tel:+0123456789">+0 000 000 0000</a>
                         </div>
                     </div>
                 </div>
+
+                <!-- Email -->
                 <div class="col-xl-4 col-lg-6 wow fadeIn" data-wow-delay=".7s">
-                    <div class="d-flex align-items-center bg-light rounded p-3">
-                        <div class="flex-shrink-0 btn-square bg-primary rounded-circle d-flex justify-content-center align-items-center" style="width: 60px; height: 60px;">
+                    <div class="d-flex align-items-center bg-light rounded-4 p-3 h-100 shadow-sm hover-shadow transition">
+                        <div class="btn-square bg-primary rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 60px; height: 60px;">
                             <i class="fa fa-envelope text-white fs-4"></i>
                         </div>
-                        <div class="ms-3">
-                            <h5 class="text-primary mb-1" style="font-weight: 600;">Email Us</h5>
-                            <a class="h6 text-decoration-none text-dark" href="mailto:info@example.com">info@example.com</a>
+                        <div>
+                            <h5 class="text-primary mb-1 fw-semibold">Email Us</h5>
+                            <a class="text-decoration-none text-dark small" href="mailto:info@example.com">info@example.com</a>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Form and Map -->
             <div class="row g-4">
+                <!-- Map -->
                 <div class="col-lg-6 wow fadeIn" data-wow-delay=".3s">
-                    <div class="rounded shadow-sm overflow-hidden" style="height: 400px;">
+                    <div class="rounded-4 overflow-hidden shadow-sm" style="height: 400px;">
                         <iframe 
                             class="w-100 h-100"
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3025.4710403339755!2d-73.82241512404069!3d40.685622471397615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c26749046ee14f%3A0xea672968476d962c!2s123rd%20St%2C%20Queens%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1686493221834!5m2!1sen!2sbd" 
@@ -696,30 +856,64 @@
                         ></iframe>
                     </div>
                 </div>
+
+                <!-- Contact Form -->
                 <div class="col-lg-6 wow fadeIn" data-wow-delay=".5s">
-                    <form class="p-4 bg-white rounded shadow-sm">
+                    <form class="p-4 p-md-5 bg-light rounded-4 shadow-sm">
                         <div class="mb-3">
-                            <input type="text" class="form-control border border-secondary rounded py-3" placeholder="Your Name" required>
+                            <input type="text" class="form-control border-0 rounded-3 py-3 shadow-sm" placeholder="Your Name" required>
                         </div>
                         <div class="mb-3">
-                            <input type="email" class="form-control border border-secondary rounded py-3" placeholder="Your Email" required>
+                            <input type="email" class="form-control border-0 rounded-3 py-3 shadow-sm" placeholder="Your Email" required>
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control border border-secondary rounded py-3" placeholder="Project">
+                            <input type="text" class="form-control border-0 rounded-3 py-3 shadow-sm" placeholder="Project">
                         </div>
                         <div class="mb-4">
-                            <textarea class="form-control border border-secondary rounded py-3" rows="6" placeholder="Message" required></textarea>
+                            <textarea class="form-control border-0 rounded-3 py-3 shadow-sm" rows="5" placeholder="Message" required></textarea>
                         </div>
-                        <div class="text-start">
-                            <button class="btn btn-primary py-3 px-5 fw-semibold" type="submit">Send Message</button>
-                        </div>
+                        <button class="btn btn-primary py-3 px-5 fw-semibold rounded-pill" type="submit">Send Message</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+</section>
 <!-- Contact End -->
+
+<!-- Additional CSS for Modern Touch -->
+<style>
+    .hover-shadow:hover {
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1) !important;
+        transform: translateY(-2px);
+        transition: all 0.3s ease;
+    }
+
+    .transition {
+        transition: all 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+        outline: none !important;
+        box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.15);
+    }
+
+    .form-control::placeholder {
+        color: #aaa;
+        font-size: 15px;
+    }
+
+    .btn-primary {
+        background-color: #1a2e4a;
+        border-color: #1a2e4a;
+    }
+
+    .btn-primary:hover {
+        background-color: #273b5b;
+        border-color: #273b5b;
+    }
+</style>
 
 
 
@@ -804,7 +998,88 @@
         <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
         <!-- Template Javascript -->
+        <script>
+  function createSocialLink(url, iconClass) {
+    if (!url) return '';
+    return `<a class="btn btn-square btn-secondary text-white rounded-circle m-1" href="${url}" target="_blank" rel="noopener noreferrer"><i class="${iconClass}"></i></a>`;
+  }
+
+  async function fetchAndRenderTeam() {
+    try {
+      const response = await fetch('get_team.php');
+      if (!response.ok) throw new Error('Network error');
+
+      const teamData = await response.json();
+      const container = document.querySelector('.team-carousel');
+
+      // Destroy existing Owl Carousel if already initialized
+      if ($(container).hasClass('owl-loaded')) {
+        $(container).trigger('destroy.owl.carousel');
+        $(container).html('');
+      }
+
+      // Inject HTML
+      container.innerHTML = teamData.map(member => `
+        <div class="rounded team-item">
+          <div class="team-content">
+            <div class="team-img-icon">
+              <div class="team-img rounded-circle">
+                <img src="admin/${member.photo}" class="img-fluid w-100 rounded-circle" alt="${member.name}">
+              </div>
+              <div class="team-name text-center py-3">
+                <h4 class="">${member.name}</h4>
+                <p class="m-0">${member.designation}</p>
+              </div>
+              <div class="team-icon d-flex justify-content-center pb-4">
+                ${createSocialLink(member.facebook, "fab fa-facebook-f")}
+                ${createSocialLink(member.twitter, "fab fa-twitter")}
+                ${createSocialLink(member.instagram, "fab fa-instagram")}
+                ${createSocialLink(member.linkedin, "fab fa-linkedin-in")}
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      // Re-initialize Owl Carousel and store instance
+      const owl = $(container).owlCarousel({
+        autoplay: true,
+        smartSpeed: 1000,
+        margin: 25,
+        dots: false,
+        loop: true,
+        nav: true,
+        navText: [
+          '<i class="bi bi-chevron-left"></i>',
+          '<i class="bi bi-chevron-right"></i>'
+        ],
+        responsive: {
+          0: { items: 1 },
+          768: { items: 2 },
+          992: { items: 3 }
+        }
+      });
+
+      // Arrow button triggers
+      $('#team-prev').click(function () {
+        owl.trigger('prev.owl.carousel');
+      });
+
+      $('#team-next').click(function () {
+        owl.trigger('next.owl.carousel');
+      });
+
+    } catch (error) {
+      console.error("Failed to load team data:", error);
+    }
+  }
+
+  fetchAndRenderTeam();
+</script>
+
         <script src="js/main.js"></script>
+
+
     </body>
 
 </html>
