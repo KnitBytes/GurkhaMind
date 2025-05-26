@@ -69,10 +69,14 @@ if (!isset($_SESSION['admin_logged_in'])) {
 <div class="sidebar">
     <h4>GurkhaMind</h4>
     <a href="dashboard.php" class="<?= !isset($_GET['page']) ? 'active' : '' ?>"><i class="fas fa-chart-line me-2"></i>Dashboard</a>
-    <a href="#"><i class="fas fa-briefcase me-2"></i>Services</a>
+    <a href="dashboard.php?page=services" class="<?= (isset($_GET['page']) && $_GET['page'] == 'services') ? 'active' : '' ?>"><i class="fas fa-briefcase me-2"></i>Services</a>
+
     <a href="dashboard.php?page=team" class="<?= (isset($_GET['page']) && $_GET['page'] == 'team') ? 'active' : '' ?>"><i class="fas fa-users-cog me-2"></i>Team</a>
 
-    <a href="#"><i class="fas fa-comments me-2"></i>Support</a>
+    <a href="dashboard.php?page=contact_messages" class="<?= (isset($_GET['page']) && $_GET['page'] == 'contact_messages') ? 'active' : '' ?>">
+    <i class="fas fa-envelope-open-text me-2"></i>Contact Messages
+</a>
+
     <a href="dashboard.php?page=edit_home" class="<?= (isset($_GET['page']) && $_GET['page'] == 'edit_home') ? 'active' : '' ?>"><i class="fas fa-cogs me-2"></i>Edit System Info</a>
     <a href="logout.php"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
 </div>
@@ -89,14 +93,20 @@ if (!isset($_SESSION['admin_logged_in'])) {
 <!-- Main Content -->
 <div class="main">
     
-    <?php
-    if (isset($_GET['page']) && $_GET['page'] === 'edit_home') {
+<?php
+if (isset($_GET['page']) && $_GET['page'] === 'edit_home') {
     include 'edit_home.php';
 } elseif (isset($_GET['page']) && $_GET['page'] === 'team') {
     include 'team.php';
-}
-     else {
-    ?>
+} elseif (isset($_GET['page']) && $_GET['page'] === 'services') {
+    include 'services.php';
+} elseif (isset($_GET['page']) && $_GET['page'] === 'contact_messages') {
+    include 'view_contacts.php'; // this file will list all contact form submissions
+} else {
+    // default dashboard content
+?>
+
+    
         <h2 class="mb-4">Hello Gurkha<span class="text-success">Mind</span></h2>
 
         <div class="row g-4">

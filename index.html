@@ -71,6 +71,7 @@
             padding: 1rem 2rem;
             box-shadow: none;
             transition: top 0.3s ease-in-out;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .navbar-nav .nav-link,
@@ -116,9 +117,7 @@
                                   <div class="container carousel-content pt-0 mt-0">
                                     <h6 class="text-secondary h4 animated fadeInUp">${data.hero_heading}</h6>
                                     <h5 class="text-white mb-4 animated fadeInLeft" style="font-size: 3rem;">${data.hero_paragraph}</h5>
-                                    <p class="mb-4 text-white fs-5 animated fadeInDown">
-                                      Lorem ipsum dolor sit amet elit. Sed efficitur quis purus ut interdum.
-                                    </p>
+                                   
                                     <a href="" class="me-2">
                                       <button class="btn btn-primary rounded-pill px-4 py-3 animated fadeInLeft">Learn More</button>
                                     </a>
@@ -274,7 +273,7 @@
 <!-- About End -->
 
 <!-- Services Start -->
- <section id="services"></section>
+ <section id="services">
 <div style="padding: 60px 0; background: linear-gradient(135deg, #f4f7ff, #eaf1ff); font-family: 'Segoe UI', sans-serif;">
   <div style="max-width: 1140px; margin: auto; padding: 0 30px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 30px;">
 
@@ -286,113 +285,7 @@
 
     <!-- Right: Service Cards -->
     <div class="services-grid">
-      <!-- Card 1 -->
-      <div class="flip-card" onclick="this.classList.toggle('flipped')">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <div class="card-content">
-              <div style="margin-bottom: 20px; color: #007bff;">
-                <i class="fas fa-robot" style="font-size: 32px;"></i>
-              </div>
-              <h4>AI & Machine Learning Consulting</h4>
-              <p>We help organizations implement AI with real-world results through custom strategies and ML models.</p>
-            </div>
-          </div>
-          <div class="flip-card-back">
-            <div class="card-content">
-              <h5 class="flip-title">Services</h5>
-              <ul>
-                <li>AI Readiness & Roadmapping</li>
-                <li>ML Model Development & NLP</li>
-                <li>Computer Vision & Predictive Analytics</li>
-                <li>Integration & Model Optimization</li>
-              </ul>
-              <p>Case: Automation cut time by 87% with 98.5% accuracy.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="flip-card" onclick="this.classList.toggle('flipped')">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <div class="card-content">
-              <div style="margin-bottom: 20px; color: #007bff;">
-                <i class="fas fa-database" style="font-size: 32px;"></i>
-              </div>
-              <h4>Data Mining & Curation</h4>
-              <p>We turn raw information into AI-ready datasets for powerful insights and decision-making.</p>
-            </div>
-          </div>
-          <div class="flip-card-back">
-            <div class="card-content">
-              <h5 class="flip-title">Services</h5>
-              <ul>
-                <li>Data Collection & Cleaning</li>
-                <li>Synthetic Data & Labeling</li>
-                <li>Security Frameworks</li>
-                <li>Knowledge Graphs</li>
-              </ul>
-              <p>Case: Built multi-nation economic DB for finance institution.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="flip-card" onclick="this.classList.toggle('flipped')">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <div class="card-content">
-              <div style="margin-bottom: 20px; color: #007bff;">
-                <i class="fas fa-chart-line" style="font-size: 32px;"></i>
-              </div>
-              <h4>Economic & Business Consulting</h4>
-              <p>We blend economic analysis with data science to empower strategic decision-making.</p>
-            </div>
-          </div>
-          <div class="flip-card-back">
-            <div class="card-content">
-              <h5 class="flip-title">Services</h5>
-              <ul>
-                <li>Market Entry & Forecasting</li>
-                <li>Risk Analysis & ROI</li>
-                <li>Impact Assessment</li>
-                <li>Policy Evaluation</li>
-              </ul>
-              <p>Case: ML early-warning system for inflation risks.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="flip-card" onclick="this.classList.toggle('flipped')">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <div class="card-content">
-              <div style="margin-bottom: 20px; color: #007bff;">
-                <i class="fas fa-building" style="font-size: 32px;"></i>
-              </div>
-              <h4>Digital Transformation</h4>
-              <p>We modernize public services using AI tools while ensuring transparency and trust.</p>
-            </div>
-          </div>
-          <div class="flip-card-back">
-            <div class="card-content">
-              <h5 class="flip-title">Services</h5>
-              <ul>
-                <li>E-Governance Platforms</li>
-                <li>Legacy System Modernization</li>
-                <li>AI Citizen Services</li>
-                <li>Open Data Frameworks</li>
-              </ul>
-              <p>Case: Transformed municipal services, cut wait by 65%.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      
     </div>
   </div>
 </div>
@@ -507,6 +400,7 @@
     }
   }
 </style>
+
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -874,21 +768,48 @@
 
                 <!-- Contact Form -->
                 <div class="col-lg-6 wow fadeIn" data-wow-delay=".5s">
-                    <form class="p-4 p-md-5 bg-light rounded-4 shadow-sm">
-                        <div class="mb-3">
-                            <input type="text" class="form-control border-0 rounded-3 py-3 shadow-sm" placeholder="Your Name" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" class="form-control border-0 rounded-3 py-3 shadow-sm" placeholder="Your Email" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control border-0 rounded-3 py-3 shadow-sm" placeholder="Project">
-                        </div>
-                        <div class="mb-4">
-                            <textarea class="form-control border-0 rounded-3 py-3 shadow-sm" rows="5" placeholder="Message" required></textarea>
-                        </div>
-                        <button class="btn btn-primary py-3 px-5 fw-semibold rounded-pill" type="submit">Send Message</button>
-                    </form>
+                    <form class="p-4 p-md-5 bg-light rounded-4 shadow-sm" method="POST" action="admin/submit_contact.php">
+    <div class="mb-3">
+        <input type="text" name="name" class="form-control border-0 rounded-3 py-3 shadow-sm" placeholder="Your Name" required>
+    </div>
+    <div class="mb-3">
+        <input type="text" name="organization" class="form-control border-0 rounded-3 py-3 shadow-sm" placeholder="Organization" required>
+    </div>
+    <div class="mb-3">
+        <input type="email" name="email" class="form-control border-0 rounded-3 py-3 shadow-sm" placeholder="Your Email" required>
+    </div>
+    <div class="mb-3">
+        <input type="text" name="phone" class="form-control border-0 rounded-3 py-3 shadow-sm" placeholder="Phone (Optional)">
+    </div>
+    <div class="mb-3">
+        <select name="project_interest" class="form-control border-0 rounded-3 py-3 shadow-sm" required>
+            <option value="">Select Project Interest</option>
+            <option value="AI & ML">AI & ML</option>
+            <option value="Data Mining">Data Mining</option>
+            <option value="Digital Transformation">Digital Transformation</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <textarea name="message" class="form-control border-0 rounded-3 py-3 shadow-sm" rows="5" placeholder="Message" required></textarea>
+    </div>
+<div class="mb-3">
+    <label class="form-label">Preferred Contact Method</label><br>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="contact_method" id="contactEmail" value="Email" required>
+        <label class="form-check-label" for="contactEmail">Email</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="contact_method" id="contactPhone" value="Phone">
+        <label class="form-check-label" for="contactPhone">Phone</label>
+    </div>
+</div>
+
+    <div class="mb-3">
+        <input type="checkbox" name="consent" value="1" required> I consent to having this website store my submitted information.
+    </div>
+    <button class="btn btn-primary py-3 px-5 fw-semibold rounded-pill" type="submit">Send Message</button>
+</form>
+
                 </div>
             </div>
         </div>
@@ -1091,6 +1012,59 @@
 
   fetchAndRenderTeam();
 </script>
+<script>
+  async function loadServices() {
+    try {
+      const response = await fetch('http://localhost/GorkhaMind/get_services.php');
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const services = await response.json();
+
+      const container = document.querySelector('#services .services-grid');
+      container.innerHTML = ''; // Clear old content
+
+      services.forEach(service => {
+        // Create back points list HTML
+        let backPointsHtml = '';
+        if (Array.isArray(service.back_points)) {
+          backPointsHtml = service.back_points.map(point => `<li>${point}</li>`).join('');
+        }
+
+        const cardHtml = `
+          <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="card-content">
+                  <div style="margin-bottom: 20px; color: #007bff;">
+                    <i class="fas ${service.icon_class}" style="font-size: 32px;"></i>
+                  </div>
+                  <h4>${service.title}</h4>
+                  <p>${service.short_description}</p>
+                </div>
+              </div>
+              <div class="flip-card-back">
+                <div class="card-content">
+                  <h5 class="flip-title">${service.back_title}</h5>
+                  <ul>${backPointsHtml}</ul>
+                  <p>Case: ${service.back_case}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+
+        container.insertAdjacentHTML('beforeend', cardHtml);
+      });
+    } catch (error) {
+      console.error('Error loading services:', error);
+    }
+  }
+
+  // Load services when the page is ready
+  document.addEventListener('DOMContentLoaded', loadServices);
+</script>
+
 
         <script src="js/main.js"></script>
 
