@@ -78,6 +78,10 @@ if (!isset($_SESSION['admin_logged_in'])) {
 </a>
 
     <a href="dashboard.php?page=edit_home" class="<?= (isset($_GET['page']) && $_GET['page'] == 'edit_home') ? 'active' : '' ?>"><i class="fas fa-cogs me-2"></i>Edit System Info</a>
+    <a href="dashboard.php?page=change_password" class="<?= (isset($_GET['page']) && $_GET['page'] == 'change_password') ? 'active' : '' ?>">
+    <i class="fas fa-key me-2"></i>Change Password
+</a>
+
     <a href="logout.php"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
 </div>
 
@@ -102,7 +106,13 @@ if (isset($_GET['page']) && $_GET['page'] === 'edit_home') {
     include 'services.php';
 } elseif (isset($_GET['page']) && $_GET['page'] === 'contact_messages') {
     include 'view_contacts.php'; // this file will list all contact form submissions
-} else {
+}elseif (isset($_GET['page']) && $_GET['page'] === 'change_password') {
+    include 'change_password.php';
+} elseif (isset($_GET['page']) && $_GET['page'] === 'edit_home') {
+    include 'edit_home.php';
+}
+ else {
+    
     // default dashboard content
 ?>
 

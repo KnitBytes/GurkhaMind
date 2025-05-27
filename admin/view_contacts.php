@@ -1,13 +1,5 @@
 <?php
-$host = "localhost";
-$user = "root";
-$password = "";
-$database = "gurkha"; // Replace with your DB name
-
-$conn = new mysqli($host, $user, $password, $database);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include 'config.php';
 
 // Handle delete request
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
@@ -82,7 +74,10 @@ $result = $conn->query($sql);
             <td><?= htmlspecialchars($row['email']) ?></td>
             <td><?= htmlspecialchars($row['phone']) ?></td>
             <td><?= htmlspecialchars($row['project_interest']) ?></td>
-            <td><?= htmlspecialchars($row['message']) ?></td>
+            <td style="max-width: 300px; white-space: pre-wrap; word-wrap: break-word;">
+    <?= nl2br(htmlspecialchars($row['message'])) ?>
+</td>
+
             <td><?= htmlspecialchars($row['contact_method']) ?></td>
             <td><?= htmlspecialchars($row['consent']) ?></td>
             <td><?= htmlspecialchars($row['submitted_at']) ?></td>

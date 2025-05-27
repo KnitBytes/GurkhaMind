@@ -82,58 +82,65 @@
         .navbar.hide {
             top: -100px;
         }
+        .carousel-caption h5,
+.carousel-caption h6 {
+    word-break: break-word;
+    text-align: center;
+    padding: 0 12px;
+}
+
+.carousel-caption h5 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.carousel-caption h6 {
+    font-size: 1.2rem;
+}
+
+.carousel-indicators li {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #0044cc; /* or your preferred color */
+    margin: 4px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-indicators .active {
+    opacity: 1;
+}
+
+
+@media (max-width: 768px) {
+    .carousel-caption h5 {
+        font-size: 1.6rem;
+    }
+    .carousel-caption h6 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-caption h5 {
+        font-size: 1.1rem;
+    }
+    .carousel-caption h6 {
+        font-size: 0.9rem;
+    }
+}
+@media (max-width: 480px) {
+    .carousel-caption button {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+    }
+    
+}
+
     </style>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            fetch('fetch_home_content.php')
-                .then(response => response.json())
-                .then(data => {
-                    if (data) {
-                        const siteName = data.site_name;
-                        const highlightedPart = "Mind";
-                        const beforeHighlight = siteName.replace(highlightedPart, "");
-                        const highlighted = siteName.includes(highlightedPart) ? highlightedPart : "";
-                        document.getElementById('site-name').innerHTML = `${beforeHighlight}<span style="color: #26d48c;">${highlighted}</span>`;
-
-                        const carouselInner = document.querySelector('.carousel-inner');
-                        const carouselIndicators = document.querySelector('.carousel-indicators');
-                        carouselInner.innerHTML = '';
-                        carouselIndicators.innerHTML = '';
-
-                        data.hero_img.forEach((img, index) => {
-                            const isActive = index === 0 ? 'active' : '';
-                            const li = document.createElement('li');
-                            li.setAttribute('data-bs-target', '#carouselId');
-                            li.setAttribute('data-bs-slide-to', index);
-                            li.className = isActive;
-                            carouselIndicators.appendChild(li);
-
-                            const div = document.createElement('div');
-                            div.className = `carousel-item ${isActive}`;
-                            div.innerHTML = `
-                                <img src="admin/${img}" class="d-block w-100" alt="Hero Image">
-                                <div class="carousel-caption">
-                                  <div class="container carousel-content pt-0 mt-0">
-                                    <h6 class="text-secondary h4 animated fadeInUp">${data.hero_heading}</h6>
-                                    <h5 class="text-white mb-4 animated fadeInLeft" style="font-size: 3rem;">${data.hero_paragraph}</h5>
-                                   
-                                    <a href="" class="me-2">
-                                      <button class="btn btn-primary rounded-pill px-4 py-3 animated fadeInLeft">Learn More</button>
-                                    </a>
-                                    <a href="" class="ms-2">
-                                      <button class="btn btn-primary rounded-pill px-4 py-3 animated fadeInRight">Contact Us</button>
-                                    </a>
-                                  </div>
-                                </div>
-                            `;
-                            carouselInner.appendChild(div);
-                        });
-                    }
-                })
-                .catch(error => console.error('Error fetching content:', error));
-        });
-    </script>
+    
 </head>
 
 <body>
@@ -181,14 +188,26 @@
     <div class="container-fluid px-0">
         <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
             <ol class="carousel-indicators"></ol>
-            <div class="carousel-inner" role="listbox"></div>
+            <div class="carousel-inner" role="listbox">
+  <div class="carousel-item active">
+    <img src="placeholder.jpg" class="d-block w-100" alt="Loading...">
+    <div class="carousel-caption">
+      <h6 class="text-secondary">Loading heading...</h6>
+      <h5 class="text-white">Please wait while we load content</h5>
+    </div>
+  </div>
+</div>
+
+            
         </div>
+        
     </div>
     <!-- Carousel End -->
 
     <!-- Page Content Below Carousel -->
     <div class="page-content">
-        <!-- Your page content here -->
+    
+
     </div>
 
 
@@ -935,6 +954,64 @@
 
         <!-- Template Javascript -->
         <script>
+
+           document.addEventListener("DOMContentLoaded", function () {
+            fetch('fetch_home_content.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data) {
+                        const siteName = data.site_name;
+                        const highlightedPart = "Mind";
+                        const beforeHighlight = siteName.replace(highlightedPart, "");
+                        const highlighted = siteName.includes(highlightedPart) ? highlightedPart : "";
+                        document.getElementById('site-name').innerHTML = `${beforeHighlight}<span style="color: #26d48c;">${highlighted}</span>`;
+
+                        const carouselInner = document.querySelector('.carousel-inner');
+                        const carouselIndicators = document.querySelector('.carousel-indicators');
+                        carouselInner.innerHTML = '';
+                        carouselIndicators.innerHTML = '';
+
+                        data.hero_img.forEach((img, index) => {
+                            const isActive = index === 0 ? 'active' : '';
+                            const btn = document.createElement('button');
+                            btn.setAttribute('type', 'button');
+                            btn.setAttribute('data-bs-target', '#carouselId');
+                            btn.setAttribute('data-bs-slide-to', index);
+                            btn.className = isActive;
+                            carouselIndicators.appendChild(btn);
+
+
+                            const div = document.createElement('div');
+                            div.className = `carousel-item ${isActive}`;
+                            div.innerHTML = `
+                                <img src="admin/${img}" class="d-block w-100" alt="Hero Image">
+                                <div class="carousel-caption">
+                                  <div class="container carousel-content pt-0 mt-0">
+                                    <h6 class="text-secondary h5 animated fadeInUp" style="font-size: 3rem;">${data.hero_heading}</h6>
+                                    <h5 class="text-white mb-4 animated fadeInLeft" style="font-size: 1.25rem;">${data.hero_paragraph}</h5>
+
+
+
+                                   
+                                    <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-2 mt-3">
+                                    <a href="">
+                                    <button class="btn btn-primary rounded-pill px-3 py-2 w-100 w-sm-auto">Learn More</button>
+                                    </a>
+                                    <a href="">
+                                    <button class="btn btn-primary rounded-pill px-3 py-2 w-100 w-sm-auto">Contact Us</button>
+                                    </a>
+                                    </div>
+
+                                  </div>
+                                </div>
+                            `;
+                            carouselInner.appendChild(div);
+                        });
+                    }
+                })
+                .catch(error => console.error('Error fetching content:', error));
+        });
+
   function createSocialLink(url, iconClass) {
     if (!url) return '';
     return `<a class="btn btn-square btn-secondary text-white rounded-circle m-1" href="${url}" target="_blank" rel="noopener noreferrer"><i class="${iconClass}"></i></a>`;
@@ -1015,7 +1092,7 @@
 <script>
   async function loadServices() {
     try {
-      const response = await fetch('http://localhost/GorkhaMind/get_services.php');
+      const response = await fetch('get_services.php');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }

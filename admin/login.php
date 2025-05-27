@@ -21,8 +21,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($res->num_rows === 1) {
         $user = $res->fetch_assoc();
         if (password_verify($password, $user['password'])) {
-            $_SESSION['admin_logged_in'] = true;
-            $_SESSION['admin_username'] = $username;
+              $_SESSION['admin_logged_in'] = true;
+$_SESSION['admin_username'] = $username;
+$_SESSION['admin_id'] = $user['id']; // ✅ This stores the admin ID
+header("Location: dashboard.php");
+exit();
+
             header("Location: dashboard.php");
             exit();
         }
