@@ -951,6 +951,37 @@
         <script src="lib/easing/easing.min.js"></script>
         <script src="lib/waypoints/waypoints.min.js"></script>
         <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <style>
+          /* Responsive text styles */
+.responsive-heading {
+    font-size: 2rem;
+}
+
+.responsive-paragraph {
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .responsive-heading {
+        font-size: 1.5rem;
+    }
+
+    .responsive-paragraph {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .responsive-heading {
+        font-size: 1.2rem;
+    }
+
+    .responsive-paragraph {
+        font-size: 0.85rem;
+    }
+}
+
+        </style>
 
         <!-- Template Javascript -->
         <script>
@@ -987,20 +1018,22 @@
                                 <img src="admin/${img}" class="d-block w-100" alt="Hero Image">
                                 <div class="carousel-caption">
                                   <div class="container carousel-content pt-0 mt-0">
-                                    <h6 class="text-secondary h5 animated fadeInUp" style="font-size: 3rem;">${data.hero_heading}</h6>
-                                    <h5 class="text-white mb-4 animated fadeInLeft" style="font-size: 1.25rem;">${data.hero_paragraph}</h5>
+                                    <h6 class="text-secondary fw-bold animated fadeInUp responsive-heading">${data.hero_heading}</h6>
+                                    <p class="text-white mb-4 animated fadeInLeft responsive-paragraph">${data.hero_paragraph}</p>
+
 
 
 
                                    
-                                    <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-2 mt-3">
-                                    <a href="">
-                                    <button class="btn btn-primary rounded-pill px-3 py-2 w-100 w-sm-auto">Learn More</button>
-                                    </a>
-                                    <a href="">
-                                    <button class="btn btn-primary rounded-pill px-3 py-2 w-100 w-sm-auto">Contact Us</button>
-                                    </a>
-                                    </div>
+                                    <div class="d-flex flex-row flex-wrap justify-content-center align-items-center gap-2 mt-3">
+    <a href="">
+        <button class="btn btn-primary rounded-pill px-3 py-2">Learn More</button>
+    </a>
+    <a href="">
+        <button class="btn btn-primary rounded-pill px-3 py-2">Contact Us</button>
+    </a>
+</div>
+
 
                                   </div>
                                 </div>
