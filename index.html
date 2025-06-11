@@ -111,6 +111,17 @@
 .carousel-indicators .active {
     opacity: 1;
 }
+@media (max-width: 992px) {
+  .navbar-collapse {
+    background-color: rgba(0, 0, 0, 0.95); /* Dark background */
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .navbar-collapse .nav-link {
+    color: #fff !important; /* Ensure links are visible */
+  }
+}
 
 
 @media (max-width: 768px) {
@@ -162,8 +173,8 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
                 <div class="navbar-nav p-0">
                     <a href="#about" class="nav-item nav-link">About Us</a>
-                    <a href="#services" class="nav-item nav-link">CoreAI Solutions</a>
-                    <a href="#work" class="nav-item nav-link">Advisory Services</a>
+                    <a href="#work" class="nav-item nav-link">CoreAI Solutions</a>
+                    <a href="#services" class="nav-item nav-link">Advisory Services</a>
                     <a href="#team" class="nav-item nav-link">Our Experts</a>
                     <a href="#contact" class="nav-item nav-link btn btn-outline-light rounded px-3 py-0.6 ms-2 custom-contact-link">Contact</a>
                 </div>
@@ -225,13 +236,13 @@
 <!-- Hero Section End -->
 
 
-        <!-- About Start -->
+     <!-- About Start -->
 <section id="about"></section>         
 <div class="container-fluid py-5 my-5" style="background: linear-gradient(to right, #f9fbff, #eef3fa); font-family: 'Segoe UI', sans-serif;">
     <div class="container pt-5">
         <div class="row g-5 align-items-center">
             <!-- Image Column -->
-            <div class="col-lg-5 col-md-6 col-sm-12 wow fadeIn" data-wow-delay=".3s">
+            <div class="col-lg-5 col-md-6 col-sm-12 wow fadeIn">
                 <div class="h-100 position-relative">
                     <img src="img/about-1.jpg" class="img-fluid w-75 rounded shadow" alt="" style="margin-bottom: 25%;">
                     <div class="position-absolute w-75" style="top: 25%; left: 25%;">
@@ -241,55 +252,58 @@
             </div>
 
             <!-- Text Content Column -->
-            <div class="col-lg-7 col-md-6 col-sm-12 wow fadeIn" data-wow-delay=".5s">
+            <div class="col-lg-7 col-md-6 col-sm-12 wow fadeIn" >
                 <h5 class="text-primary" style="font-weight: 600;">About Us</h5>
                 <h2 class="mb-4" style="font-weight: 700; color: #222;">Excellence in AI and Data Solutions</h2>
 
-               <!-- Mission Card -->
-            <div class="mb-3">
-                <div style="
-                      background: #fff;
-                      border: 1px solid #e0e0e0;
-                      border-radius: 8px;
-                      padding: 15px 20px;
-                      min-height: 120px;
-                       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-               ">
-            <h6 class="text-primary mb-2" style="font-weight: 600;">Our Mission</h6>
-            <p class="mb-0" style="font-size: 15px; color: #555;">
-             GurkhaMind empowers organizations to grow and thrive by delivering innovative, adaptable, and results-driven technology solutions with a strong foundation in discipline and integrity.
-            </p>
-    </div>
-</div>
+                <!-- Cards Container -->
+                <div class="mission-story-wrapper position-relative" style="height: 300px;">
+                    <!-- Mission Card -->
+                    <div class="mission-card position-absolute w-75" style="top: 0; left: 15%; z-index: 2;">
+                        <div style="background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); border: 1px solid #e0e0e0;">
+                            <h6 class="text-primary mb-2" style="font-weight: 600;">Our Mission</h6>
+                            <p class="mb-0" style="font-size: 15px; color: #555;">
+                                GurkhaMind empowers organizations to grow and thrive by delivering innovative, adaptable, and results-driven technology solutions with a strong foundation in discipline and integrity.
+                            </p>
+                        </div>
+                    </div>
 
- <!-- Story Card -->
-            <div class="mb-4">
-            <div style="
-                 background: #fff;
-                 border: 1px solid #e0e0e0;
-                 border-radius: 8px;
-                 padding: 15px 20px;
-                 min-height: 120px;
-                 box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-            ">
-        <h6 class="text-primary mb-2" style="font-weight: 600;">Our Story</h6>
-        <p class="mb-0" style="font-size: 15px; color: #555;">
-            Founded by experienced technologists, GurkhaMind delivers ethical, informed AI solutions globally—blending academic excellence with practical impact.
-        </p>
-    </div>
-</div>
-
-
-               
+                    <!-- Story Card -->
+                    <div class="story-card position-absolute w-75" style="top: 45%; left: 30%; z-index: 1;">
+                        <div style="background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); border: 1px solid #e0e0e0;">
+                            <h6 class="text-primary mb-2" style="font-weight: 600;">Our Story</h6>
+                            <p class="mb-0" style="font-size: 15px; color: #555;">
+                                Founded by experienced technologists, GurkhaMind delivers ethical, informed AI solutions globally—blending academic excellence with practical impact.
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Button -->
-                <a href="#services" class="btn btn-primary rounded-pill px-5 py-3 text-white mt-3" style="box-shadow: 0 4px 12px rgba(0,123,255,0.3);">Discover Our Services</a>
+                <a href="#services" class="btn btn-primary rounded-pill px-5 py-3 text-white mt-5" style="box-shadow: 0 4px 12px rgba(0,123,255,0.3);">Discover Our Services</a>
             </div>
         </div>
     </div>
 </div>
-</section>
+
+<!-- Responsive Styles -->
+<style>
+@media (max-width: 767px) {
+    .mission-story-wrapper {
+        position: static !important;
+        height: auto !important;
+    }
+
+    .mission-card,
+    .story-card {
+        position: static !important;
+        width: 100% !important;
+        margin-bottom: 20px;
+    }
+}
+</style>
 <!-- About End -->
+
 
 <!-- Services Start -->
  <section id="services">
@@ -298,7 +312,7 @@
 
     <!-- Left: Service Info -->
     <div class="services-info" style="flex: 1; min-width: 280px; max-width: 350px;">
-      <h5 class="text-primary" style="color: #007bff; font-weight: 600; margin-bottom: 10px;">Our Services</h5>
+      <h5 class="text-primary" style="color: #007bff; font-weight: 600; margin-bottom: 10px;">Advisory Services</h5>
       <h2 style="font-size: 32px; font-weight: 700; color: #333;">Empowering Change Through Innovation</h2>
     </div>
 
@@ -310,114 +324,119 @@
 </div>
 </section>
 <!-- CSS -->
-<style>
+ <style>
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  flex: 2;
+  min-width: 300px;
+}
+
+.flip-card {
+  background: transparent;
+  perspective: 1000px;
+  min-height: 350px; /* Desktop */
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.flip-card:hover .flip-card-inner,
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+.flip-card-front {
+  background: #fff;
+  color: #333;
+}
+
+.flip-card-back {
+  background: #007bff;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.card-content h4 {
+  margin-bottom: 10px;
+  font-size: 19px;
+}
+
+.card-content p {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.flip-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  border-bottom: 2px solid white;
+  display: inline-block;
+}
+
+.card-content ul {
+  padding-left: 18px;
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+@media (max-width: 992px) and (min-width: 769px) {
   .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    flex: 2;
-    min-width: 300px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 
   .flip-card {
-    background: transparent;
-    perspective: 1000px;
-    min-height: 300px;
-    cursor: pointer;
+    min-height: 340px; /* Tablet */
+  }
+}
+
+@media (max-width: 768px) {
+  .services-info {
+    max-width: 100% !important;
   }
 
-  .flip-card-inner {
-    position: relative;
+  .services-grid {
+    flex: 100%;
+  }
+
+  .services-info,
+  .services-grid {
     width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
   }
 
-  .flip-card:hover .flip-card-inner,
-  .flip-card.flipped .flip-card-inner {
-    transform: rotateY(180deg);
+  .flip-card {
+    min-height: 320px; /* Mobile */
   }
+}
 
-  .flip-card-front,
-  .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-    backface-visibility: hidden;
-    border-radius: 12px;
-    box-sizing: border-box;
-  }
-
-  .flip-card-front {
-    background: #fff;
-    color: #333;
-  }
-
-  .flip-card-back {
-    background: #007bff;
-    color: white;
-    transform: rotateY(180deg);
-  }
-
-  .card-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-  }
-
-  .card-content h4 {
-    margin-bottom: 10px;
-    font-size: 19px;
-  }
-
-  .card-content p {
-    font-size: 16px;
-    margin-top: 10px;
-  }
-
-  .flip-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    border-bottom: 2px solid white;
-    display: inline-block;
-  }
-
-  .card-content ul {
-    padding-left: 18px;
-    font-size: 16px;
-    margin: 10px 0;
-  }
-
-  @media (max-width: 992px) {
-    .services-grid {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-  }
-
-  @media (max-width: 768px) {
-    .services-info {
-      max-width: 100% !important;
-    }
-
-    .services-grid {
-      flex: 100%;
-    }
-
-    .services-info,
-    .services-grid {
-      width: 100%;
-    }
-
-    .flip-card {
-      min-height: 280px;
-    }
-  }
 </style>
 
 
@@ -429,89 +448,108 @@
     <div class="row align-items-start">
       <!-- Left side: text content -->
       <div class="col-md-4">
-        <div class="text-start pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 100%;">
-          <h5 class="text-primary">Our Work</h5>
+        <div class="text-start pb-5 wow fadeIn"  style="max-width: 100%;">
+          <h5 class="text-primary">CoreAI Solutions</h5>
           <h1>Transformative Ideas and Impacts</h1>
         </div>
       </div>
 
-      <!-- Right side: cards -->
-      <div class="col-md-8">
-        <div class="row g-4">
-          <!-- Card 1 -->
-          <div class="col-md-6 col-lg-6 wow fadeIn" data-wow-delay=".3s">
-            <div class="p-4 bg-light rounded h-100">
-              <h5 class="fw-bold">Digital Transformation for Governments</h5>
-              <p class="mb-3">Modernizing public services through AI-based citizen platforms and data initiatives.</p>
-              <hr>
-              <small class="d-block fw-semibold text-muted mb-1">Case study</small>
-              <h6 class="mb-1">Municipal Council</h6>
-              <p class="mb-0 text-muted">Reduced waiting times by 65% in a service delivery system using AI workflows.</p>
-            </div>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="col-md-6 col-lg-6 wow fadeIn" data-wow-delay=".5s">
-            <div class="p-4 bg-light rounded h-100">
-              <h5 class="fw-bold">Economic & Business Consulting</h5>
-              <p class="mb-3">Creating strategic insights with forecasting models and ROI-driven recommendations.</p>
-              <hr>
-              <small class="d-block fw-semibold text-muted mb-1">Case study</small>
-              <h6 class="mb-1">Central Bank</h6>
-              <p class="mb-0 text-muted">Developed an early warning system for inflation risks using machine learning.</p>
-            </div>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="col-md-6 col-lg-6 wow fadeIn" data-wow-delay=".7s">
-            <div class="p-4 bg-light rounded h-100">
-              <h5 class="fw-bold">Bespoke Research & Strategy</h5>
-              <p class="mb-3">Conducting custom studies and building innovative AI strategies for unique challenges.</p>
-              <hr>
-              <small class="d-block fw-semibold text-muted mb-1">Case study</small>
-              <h6 class="mb-1">International Development Org</h6>
-              <p class="mb-0 text-muted">Created an AI readiness index for 25 developing economies.</p>
-            </div>
-          </div>
-        </div>
+     <!-- Right side: cards -->
+<div class="col-md-8">
+  <div class="row g-4">
+    <!-- Card 1 -->
+    <div class="col-md-6 col-lg-6 wow fadeIn" >
+      <div class="p-4 bg-light rounded h-100">
+        <h5 class="fw-bold">Context-Aware Algorithms</h5>
+        <p class="mb-3">Our context-aware algorithms incorporate regional expertise to create AI solutions that work effectively across different environments.</p>
+        <a href="#" class="text-primary small fw-semibold"
+           data-bs-toggle="modal" 
+           data-bs-target="#serviceModal"
+           data-title="Context-Aware Algorithms"
+           data-content="<ul><li>Multilingual models tuned for underrepresented languages</li><li>Contextual layers for recommendation systems</li><li>Locally relevant data augmentation techniques</li><li>Bias detection and mitigation for diverse populations</li><li>Community-involved model validation processes</li><li>Appropriate user interfaces and interactions</li><li>Adaptation frameworks for cross-cultural deployment</li></ul>">
+           Read more →
+        </a>
       </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-md-6 col-lg-6 wow fadeIn" >
+      <div class="p-4 bg-light rounded h-100">
+        <h5 class="fw-bold">AI Policy & Ethics for Governments</h5>
+        <p class="mb-3">We help policymakers develop ethical, rights-respecting AI frameworks to guide implementation and governance.</p>
+        <a href="#" class="text-primary small fw-semibold"
+           data-bs-toggle="modal" 
+           data-bs-target="#serviceModal"
+           data-title="AI Policy & Ethics for Governments"
+           data-content="<ul><li>AI Policy Assessment and Benchmarking</li><li>Regulatory Framework Development</li><li>Ethical Guidelines for Public Sector AI</li><li>Algorithmic Impact Assessment Tools</li><li>Public Consultation Mechanisms</li><li>Data Protection and Privacy Frameworks</li><li>International AI Governance Alignment</li><li>AI Literacy Programs for Public Officials</li></ul>">
+           Read more →
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-md-6 col-lg-6 wow fadeIn" >
+      <div class="p-4 bg-light rounded h-100">
+        <h5 class="fw-bold">Technology for Development</h5>
+        <p class="mb-3">We create sustainable AI solutions that tackle governance and social challenges through public-private partnerships.</p>
+        <a href="#" class="text-primary small fw-semibold"
+           data-bs-toggle="modal" 
+           data-bs-target="#serviceModal"
+           data-title="Technology for Development"
+           data-content="<ul><li>Problem Analysis and Solution Design</li><li>Product Development with Impact Metrics</li><li>Public-Private Partnership Structuring</li><li>Sustainability and Scaling Models</li><li>Impact Investor Matchmaking</li><li>Community Engagement and Co-creation</li><li>Social Return on Investment Frameworks</li><li>Technology Transfer and Capacity Building</li></ul>">
+           Read more →
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
     </div>
   </div>
 </div>
 </section>
 
 <!-- Team Start -->
- <section id="team">
-<div class="container-fluid py-5 mb-5 team">
-  <div class="container">
-    <div class="row align-items-center">
-      
-      <!-- Left side: text content -->
-      <div class="col-md-4">
-        <div class="text-start wow fadeIn" data-wow-delay=".3s" style="max-width: 100%;">
-          <h5 class="text-primary">Our Team</h5>
-          <h1>Meet our expert Team</h1>
-        </div>
-        <button id="team-prev" class="btn btn-primary"><i class="bi bi-chevron-left"></i></button>
-<button id="team-next" class="btn btn-primary"><i class="bi bi-chevron-right"></i></button>
+<section id="team">
+  <div class="container-fluid py-5 mb-5 team">
+    <div class="container">
+      <div class="row align-items-center">
 
-      </div>
-      
-      <!-- Right side: team carousel + arrows -->
-      <div class="col-md-8 position-relative">
-        <!-- Carousel -->
-        <div class="owl-carousel team-carousel wow fadeIn" data-wow-delay=".5s">
-          <!-- Dynamic team members injected here -->
+        <!-- Left side: text content -->
+        <div class="col-md-4">
+          <div class="text-start wow fadeIn"  style="max-width: 100%;">
+            <h5 class="text-primary">Our Team</h5>
+            <h1>Meet our expert Team</h1>
+          </div>
+
+          <!-- Custom Arrows with margin to avoid overlap -->
+          <div style="margin-top: 40px;">
+            <button id="team-prev" class="btn btn-primary custom-arrow"><i class="bi bi-chevron-left"></i></button>
+            <button id="team-next" class="btn btn-primary custom-arrow"><i class="bi bi-chevron-right"></i></button>
+          </div>
         </div>
 
-        
-        
+        <!-- Right side: team carousel -->
+        <div class="col-md-8 position-relative">
+          <div class="owl-carousel team-carousel wow fadeIn" >
+            <!-- Dynamic team members injected here -->
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
-</div>
-<!-- Team End -->
 </section>
+
+<!-- Inline CSS to hide arrows on mobile -->
+<style>
+  @media (max-width: 768px) {
+    .custom-arrow {
+      display: none !important;
+    }
+  }
+</style>
+
 
 
 
@@ -526,11 +564,11 @@
   <sectio id="testimonial">    
 <div class="container-fluid testimonial py-5 mb-5">
     <div class="container">
-        <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
+        <div class="text-center mx-auto pb-5 wow fadeIn"  style="max-width: 600px;">
             <h5 class="text-primary">Our Testimonial</h5>
             <h1>Our Client Saying!</h1>
         </div>
-        <div class="owl-carousel testimonial-carousel wow fadeIn" data-wow-delay=".5s">
+        <div class="owl-carousel testimonial-carousel wow fadeIn" >
 
             <div class="testimonial-item border p-4">
                 <div class="border-bottom pb-3 mb-4">
@@ -724,7 +762,7 @@
  <section id="contact"> 
 <div class="container-fluid py-5 mb-5" style="background-color: #f9fafb;">
     <div class="container">
-        <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
+        <div class="text-center mx-auto pb-5 wow fadeIn"  style="max-width: 600px;">
             <h5 class="text-secondary text-uppercase tracking-widest" style="letter-spacing: 2px; font-weight: 600;">Ready to Transform</h5>
             <h1 class="mb-4 display-5 fw-bold" style="color: #1a2e4a;">Contact for Any Query</h1>
             <p class="text-muted">We’d love to hear from you. Whether you have a question, feedback, or just want to say hello, our team is ready to help.</p>
@@ -733,7 +771,7 @@
         <div class="contact-detail position-relative p-4 p-md-5 rounded shadow-lg" style="background: #ffffff; border: 1px solid #eaeaea;">
             <div class="row g-4 mb-5 justify-content-center">
                 <!-- Address -->
-                <div class="col-xl-4 col-lg-6 wow fadeIn" data-wow-delay=".3s">
+                <div class="col-xl-4 col-lg-6 wow fadeIn" >
                     <div class="d-flex align-items-center bg-light rounded-4 p-3 h-100 shadow-sm hover-shadow transition">
                         <div class="btn-square bg-primary rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 60px; height: 60px;">
                             <i class="fas fa-map-marker-alt text-white fs-4"></i>
@@ -746,7 +784,7 @@
                 </div>
 
                 <!-- Phone -->
-                <div class="col-xl-4 col-lg-6 wow fadeIn" data-wow-delay=".5s">
+                <div class="col-xl-4 col-lg-6 wow fadeIn" >
                     <div class="d-flex align-items-center bg-light rounded-4 p-3 h-100 shadow-sm hover-shadow transition">
                         <div class="btn-square bg-primary rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 60px; height: 60px;">
                             <i class="fa fa-phone text-white fs-4"></i>
@@ -759,7 +797,7 @@
                 </div>
 
                 <!-- Email -->
-                <div class="col-xl-4 col-lg-6 wow fadeIn" data-wow-delay=".7s">
+                <div class="col-xl-4 col-lg-6 wow fadeIn" >
                     <div class="d-flex align-items-center bg-light rounded-4 p-3 h-100 shadow-sm hover-shadow transition">
                         <div class="btn-square bg-primary rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 60px; height: 60px;">
                             <i class="fa fa-envelope text-white fs-4"></i>
@@ -775,7 +813,7 @@
             <!-- Form and Map -->
             <div class="row g-4">
                 <!-- Map -->
-                <div class="col-lg-6 wow fadeIn" data-wow-delay=".3s">
+                <div class="col-lg-6 wow fadeIn" >
                     <div class="rounded-4 overflow-hidden shadow-sm" style="height: 400px;">
                         <iframe 
                             class="w-100 h-100"
@@ -786,7 +824,7 @@
                 </div>
 
                 <!-- Contact Form -->
-                <div class="col-lg-6 wow fadeIn" data-wow-delay=".5s">
+                <div class="col-lg-6 wow fadeIn" >
                     <form class="p-4 p-md-5 bg-light rounded-4 shadow-sm" method="POST" action="admin/submit_contact.php">
     <div class="mb-3">
         <input type="text" name="name" class="form-control border-0 rounded-3 py-3 shadow-sm" placeholder="Your Name" required>
@@ -873,7 +911,7 @@
 
 
         <!-- Footer Start -->
-         <div class="container-fluid footer bg-dark wow fadeIn" data-wow-delay=".3s">
+         <div class="container-fluid footer bg-dark wow fadeIn" >
             <div class="container pt-5 pb-4">
                 <div class="row g-5">
                     <div class="col-lg-3 col-md-6">
@@ -1018,7 +1056,8 @@
                                 <img src="admin/${img}" class="d-block w-100" alt="Hero Image">
                                 <div class="carousel-caption">
                                   <div class="container carousel-content pt-0 mt-0">
-                                    <h6 class="text-secondary fw-bold animated fadeInUp responsive-heading">${data.hero_heading}</h6>
+                                   <h5 class="text-secondary fw-bold animated fadeInUp responsive-heading">${data.hero_heading}</h5>
+
                                     <p class="text-white mb-4 animated fadeInLeft responsive-paragraph">${data.hero_paragraph}</p>
 
 
@@ -1026,13 +1065,13 @@
 
                                    
                                     <div class="d-flex flex-row flex-wrap justify-content-center align-items-center gap-2 mt-3">
-    <a href="">
-        <button class="btn btn-primary rounded-pill px-3 py-2">Learn More</button>
-    </a>
-    <a href="">
-        <button class="btn btn-primary rounded-pill px-3 py-2">Contact Us</button>
-    </a>
-</div>
+                                  <a href="">
+                                     <button class="btn btn-primary rounded-pill px-3 py-2">Learn More</button>
+                                  </a>
+                                  <a href="">
+                                    <button class="btn btn-primary rounded-pill px-3 py-2">Contact Us</button>
+                                   </a>
+                                </div>
 
 
                                   </div>
@@ -1124,60 +1163,85 @@
 </script>
 <script>
   async function loadServices() {
-    try {
-      const response = await fetch('get_services.php');
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const services = await response.json();
+  try {
+    const response = await fetch('get_services.php');
+    if (!response.ok) throw new Error('Network response was not ok');
+    const services = await response.json();
 
-      const container = document.querySelector('#services .services-grid');
-      container.innerHTML = ''; // Clear old content
+    const container = document.querySelector('#services .services-grid');
+    container.innerHTML = ''; // Clear old content
 
-      services.forEach(service => {
-        // Create back points list HTML
-        let backPointsHtml = '';
-        if (Array.isArray(service.back_points)) {
-          backPointsHtml = service.back_points.map(point => `<li>${point}</li>`).join('');
-        }
-
-        const cardHtml = `
-          <div class="flip-card" onclick="this.classList.toggle('flipped')">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="card-content">
-                  <div style="margin-bottom: 20px; color: #007bff;">
-                    <i class="fas ${service.icon_class}" style="font-size: 32px;"></i>
-                  </div>
-                  <h4>${service.title}</h4>
-                  <p>${service.short_description}</p>
-                </div>
-              </div>
-              <div class="flip-card-back">
-                <div class="card-content">
-                  <h5 class="flip-title">${service.back_title}</h5>
-                  <ul>${backPointsHtml}</ul>
-                  <p>Case: ${service.back_case}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        `;
-
-        container.insertAdjacentHTML('beforeend', cardHtml);
-      });
-    } catch (error) {
-      console.error('Error loading services:', error);
-    }
+    services.forEach(service => {
+      const linkHtml = `
+        <div style="padding: 15px; background: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+          <a href="service.html?id=${service.id}" style="font-size: 20px; font-weight: 600; color: #007bff; text-decoration: none;">
+            ${service.title}
+          </a>
+        </div>
+      `;
+      container.insertAdjacentHTML('beforeend', linkHtml);
+    });
+  } catch (error) {
+    console.error('Error loading services:', error);
   }
+}
+document.addEventListener('DOMContentLoaded', loadServices);
 
-  // Load services when the page is ready
-  document.addEventListener('DOMContentLoaded', loadServices);
 </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const navLinks = document.querySelectorAll('.navbar-collapse .nav-link');
+    const navbarCollapse = document.getElementById('navbarCollapse');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+        if (bsCollapse) {
+          bsCollapse.hide(); // Collapse the menu
+        }
+      });
+    });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const serviceModal = document.getElementById('serviceModal');
+
+    serviceModal.addEventListener('show.bs.modal', function (event) {
+      const button = event.relatedTarget;
+      const title = button.getAttribute('data-title');
+      const content = button.getAttribute('data-content');
+
+      const modalTitle = serviceModal.querySelector('.modal-title');
+      const modalBody = serviceModal.querySelector('#modalContent');
+
+      modalTitle.textContent = title;
+      modalBody.innerHTML = content;
+    });
+  });
+</script>
+
+
+
 
 
         <script src="js/main.js"></script>
 
+    <!-- Modal -->
+<div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="serviceModalLabel">Service Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modalContent">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </div>
+</div>
 
     </body>
 

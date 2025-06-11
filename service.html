@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>GurkhaMind</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Saira:wght@500;600;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        .carousel-caption {
+            top: 10%;
+            bottom: auto;
+            transform: none;
+        }
+
+        .carousel-content {
+            padding-top: 0 !important;
+            margin-top: 0 !important;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            max-height: 100vh;
+            object-fit: cover;
+            object-position: center center;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: transparent !important;
+            z-index: 1050;
+            padding: 1rem 2rem;
+            box-shadow: none;
+            transition: top 0.3s ease-in-out;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .navbar-nav .nav-link,
+        .custom-contact-link {
+            color: #fff !important;
+        }
+
+        .navbar.hide {
+            top: -100px;
+        }
+        .carousel-caption h5,
+.carousel-caption h6 {
+    word-break: break-word;
+    text-align: center;
+    padding: 0 12px;
+}
+
+.carousel-caption h5 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.carousel-caption h6 {
+    font-size: 1.2rem;
+}
+
+.carousel-indicators li {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #0044cc; /* or your preferred color */
+    margin: 4px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-indicators .active {
+    opacity: 1;
+}
+@media (max-width: 992px) {
+  .navbar-collapse {
+    background-color: rgba(0, 0, 0, 0.95); /* Dark background */
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .navbar-collapse .nav-link {
+    color: #fff !important; /* Ensure links are visible */
+  }
+}
+
+
+@media (max-width: 768px) {
+    .carousel-caption h5 {
+        font-size: 1.6rem;
+    }
+    .carousel-caption h6 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-caption h5 {
+        font-size: 1.1rem;
+    }
+    .carousel-caption h6 {
+        font-size: 0.9rem;
+    }
+}
+@media (max-width: 480px) {
+    .carousel-caption button {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+    }
+    
+}
+
+    </style>
+
+    
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-dark navbar-expand-lg" id="mainNavbar">
+        <div class="container-fluid px-4">
+            <a href="index.html" class="navbar-brand">
+                <h1 class="text-white fw-bold d-block" id="site-name">Loading...</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+                <div class="navbar-nav p-0">
+                    <a href="index.html#about" class="nav-item nav-link">About Us</a>
+                    <a href="index.html#work" class="nav-item nav-link">CoreAI Solutions</a>
+                    <a href="index.html#services" class="nav-item nav-link">Advisory Services</a>
+                    <a href="index.html#team" class="nav-item nav-link">Our Experts</a>
+                    <a href="index.html#contact" class="nav-item nav-link btn btn-outline-light rounded px-3 py-0.6 ms-2 custom-contact-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Hide navbar on scroll -->
+    <script>
+        const navbar = document.getElementById("mainNavbar");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add("hide");
+            } else {
+                navbar.classList.remove("hide");
+            }
+        });
+    </script>
+        <!-- Navbar End -->
+<style>
+    .page-header {
+    
+    padding-bottom: -20rem !important;
+}
+
+.page-header h1 {
+    font-size: 2.5rem; /* reduce heading size */
+}
+
+    </style>
+        
+        <!-- Page Header Start -->
+        <div class="container-fluid page-header py-5">
+            
+        </div>
+        <!-- Page Header End -->
+
+
+       <!-- Service Detail Section -->
+    <div id="service-details" class="card p-4 position-relative">
+
+  <!-- Go Back Button (Top Right Corner) -->
+  <a href="index.html#services" class="btn btn-sm btn-outline-primary position-absolute top-0 end-0 m-3">
+    ← Go Back
+  </a>
+
+  <h1 id="service-title" class="card-title mt-3"></h1>
+  <p id="service-description" class="card-description"></p>
+
+  <h2 id="back-title" class="card-subtitle mt-4"></h2>
+  <ul id="back-points" class="card-points"></ul>
+
+  <blockquote id="case-study" class="card-quote mt-4"></blockquote>
+</div>
+
+  <style>
+
+
+  .card {
+    background: #ffffff;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease-in-out;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .card-title {
+    font-size: 2rem;
+    color: #1a237e;
+    margin-bottom: 1rem;
+  }
+
+  .card-description {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .card-subtitle {
+    font-size: 1.4rem;
+    color: #0d47a1;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-points {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-points li {
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+  }
+
+  .card-quote {
+    border-left: 4px solid #2196f3;
+    background: #e3f2fd;
+    padding: 1rem 1.5rem;
+    font-style: italic;
+    color: #0d47a1;
+    border-radius: 8px;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 600px) {
+    .card {
+      padding: 1rem;
+    }
+    .card-title {
+      font-size: 1.5rem;
+    }
+    .card-subtitle {
+      font-size: 1.2rem;
+    }
+  }
+</style>
+
+</div>
+
+
+
+
+
+        <!-- Footer Start -->
+         <div class="container-fluid footer bg-dark wow fadeIn" data-wow-delay=".3s">
+            <div class="container pt-5 pb-4">
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <a href="index.html">
+                            <h3 class="text-white fw-bold d-block">Why Gurkha<span class="text-secondary">Mind</span> </h3>
+                        </a>
+                            <div class="mt-4 d-flex flex-column short-link">
+                            <a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Who We are</a>
+                            <a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Our Philosophy</a>
+                            <a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Success Stories</a>
+                            <a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Ethical AI Approach</a>
+                           
+                        </div>
+                        <div class="d-flex hightech-link">
+                            <a href="" class="btn-light nav-fill btn btn-square rounded-circle me-2"><i class="fab fa-facebook-f text-primary"></i></a>
+                            <a href="" class="btn-light nav-fill btn btn-square rounded-circle me-2"><i class="fab fa-twitter text-primary"></i></a>
+                            <a href="" class="btn-light nav-fill btn btn-square rounded-circle me-2"><i class="fab fa-instagram text-primary"></i></a>
+                            <a href="" class="btn-light nav-fill btn btn-square rounded-circle me-0"><i class="fab fa-linkedin-in text-primary"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <a href="#" class="h3 text-secondary">Solutions</a>
+                        <div class="mt-4 d-flex flex-column short-link">
+                            <a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>AI Consulting</a>
+                            <a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Data Curation</a>
+                            <a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Software Development</a>
+                            <a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Government Transfomation</a>
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <a href="#" class="h3 text-secondary">Resources</a>
+                        <div class="mt-4 d-flex flex-column help-link">
+                            <a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Case Studies</a>
+                            <a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Blog</a>
+                            <a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>AI Readiness Index</a>
+                            <a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Webinars</a>
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <a href="#" class="h3 text-secondary">Clients & Impact</a>
+                         <div class="mt-4 d-flex flex-column help-link">
+                            <a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Government Partners</a>
+                            <a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>NGOs</a>
+                            <a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Development Institutions</a>
+                            <a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Testimonials</a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <hr class="text-light mt-5 mb-4">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start">
+                        <span class="text-light"><a href="#" class="text-secondary"><i class="fas fa-copyright text-secondary me-2"></i>GurkhaMind</a>, All right reserved.</span>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        
+                        <span class="text-light">Crafted By<a href="https://knitbytes.com" class="text-secondary"> Knitbytes</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-secondary btn-square rounded-circle back-to-top"><i class="fa fa-arrow-up text-white"></i></a>
+
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+        <!-- Template Javascript -->
+         
+             <script>
+  document.addEventListener("DOMContentLoaded", function () {
+            fetch('fetch_home_content.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data) {
+                        const siteName = data.site_name;
+                        const highlightedPart = "Mind";
+                        const beforeHighlight = siteName.replace(highlightedPart, "");
+                        const highlighted = siteName.includes(highlightedPart) ? highlightedPart : "";
+                        document.getElementById('site-name').innerHTML = `${beforeHighlight}<span style="color: #26d48c;">${highlighted}</span>`;
+
+                        const carouselInner = document.querySelector('.carousel-inner');
+                        const carouselIndicators = document.querySelector('.carousel-indicators');
+                        carouselInner.innerHTML = '';
+                        carouselIndicators.innerHTML = '';
+
+                        data.hero_img.forEach((img, index) => {
+                            const isActive = index === 0 ? 'active' : '';
+                            const btn = document.createElement('button');
+                            btn.setAttribute('type', 'button');
+                            btn.setAttribute('data-bs-target', '#carouselId');
+                            btn.setAttribute('data-bs-slide-to', index);
+                            btn.className = isActive;
+                            carouselIndicators.appendChild(btn);
+
+
+                            const div = document.createElement('div');
+                            div.className = `carousel-item ${isActive}`;
+                            div.innerHTML = `
+                                <img src="admin/${img}" class="d-block w-100" alt="Hero Image">
+                                <div class="carousel-caption">
+                                  <div class="container carousel-content pt-0 mt-0">
+                                   <h5 class="text-secondary fw-bold animated fadeInUp responsive-heading">${data.hero_heading}</h5>
+
+                                    <p class="text-white mb-4 animated fadeInLeft responsive-paragraph">${data.hero_paragraph}</p>
+
+
+
+
+                                   
+                                    <div class="d-flex flex-row flex-wrap justify-content-center align-items-center gap-2 mt-3">
+                                  <a href="">
+                                     <button class="btn btn-primary rounded-pill px-3 py-2">Learn More</button>
+                                  </a>
+                                  <a href="">
+                                    <button class="btn btn-primary rounded-pill px-3 py-2">Contact Us</button>
+                                   </a>
+                                </div>
+
+
+                                  </div>
+                                </div>
+                            `;
+                            carouselInner.appendChild(div);
+                        });
+                    }
+                })
+                .catch(error => console.error('Error fetching content:', error));
+        });
+
+            </script>
+              <script>
+    // Helper: Get query parameter by name
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    // Load JSON and update content
+    async function loadServiceDetails() {
+      const serviceId = getQueryParam("id");
+      if (!serviceId) {
+        document.getElementById("service-details").innerHTML = "<p>No service ID provided in URL.</p>";
+        return;
+      }
+
+      try {
+        const response = await fetch("get_services.php"); // Replace with your API URL
+        const data = await response.json();
+
+        // Find the service by ID
+        const service = data.find(s => s.id === serviceId);
+        if (!service) {
+          document.getElementById("service-details").innerHTML = "<p>Service not found.</p>";
+          return;
+        }
+
+        // Populate the page
+        document.getElementById("service-title").textContent = service.title;
+        document.getElementById("service-description").textContent = service.short_description;
+        document.getElementById("back-title").textContent = service.back_title;
+
+        // Populate bullet points
+        const pointsList = document.getElementById("back-points");
+        pointsList.innerHTML = "";
+        service.back_points.forEach(point => {
+          const li = document.createElement("li");
+          li.textContent = point;
+          pointsList.appendChild(li);
+        });
+
+        document.getElementById("case-study").textContent = service.back_case;
+
+      } catch (error) {
+        console.error("Error loading service details:", error);
+        document.getElementById("service-details").innerHTML = "<p>Error loading data.</p>";
+      }
+    }
+
+    // Call the function on page load
+    loadServiceDetails();
+  </script>
+        <script src="js/main.js"></script>
+    </body>
+
+</html>
